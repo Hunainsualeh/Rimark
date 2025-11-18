@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rimark</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            /* Prevents side scrolling on mobile */
+        }
+
+        /* Custom colors */
+        .bg-brand-dark {
+            background-color: #030618;
+        }
+
+        .bg-brand-blue {
+            background-color: #457BFF;
+        }
+
+        .bg-brand-yellow {
+            background-color: #F3D47B;
+        }
+
+        .text-brand-yellow {
+            color: #F3D47B;
+        }
+
+        /* Smooth Accordion Animation */
+        details>summary {
+            list-style: none;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details[open] summary~* {
+            animation: sweep .3s ease-in-out;
+        }
+
+        @keyframes sweep {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px)
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        /* Mobile Menu Overlay Transition */
+        #mobile-menu-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .menu-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .menu-visible {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-brand-blue relative">
+
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-[#F3D47B] z-50 flex flex-col justify-between p-6 menu-hidden">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="//images.squarespace-cdn.com/content/v1/68ef93a4c5281829b467638f/1760531367971-QH8A5E8S8F7LQWFMV307/RimarkLogoLockup.png?format=1500w"
+                    alt="Rimark" class="h-8">
+                <span class="text-white text-xs font-light tracking-wide hidden sm:block">A place made better by the
+                    people in it.</span>
+            </div>
+            <button onclick="toggleMenu()" class="text-black hover:opacity-70 transition">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="flex-grow"></div>
+
+        <div class="w-full pb-8">
+            <button
+                class="w-full bg-black text-white font-bold py-5 rounded-xl text-xl uppercase tracking-wider shadow-xl hover:bg-gray-900 transition-colors">
+                Join For Free
+            </button>
+        </div>
+    </div>
+
+
+    <nav
+        class="bg-brand-dark text-white py-4 md:py-10 px-6 md:px-12 flex justify-between items-center shadow-md relative z-20">
+        <div class="flex items-center">
+            <img src="//images.squarespace-cdn.com/content/v1/68ef93a4c5281829b467638f/1760531367971-QH8A5E8S8F7LQWFMV307/RimarkLogoLockup.png?format=1500w"
+                alt="Rimark" class="h-8 md:h-12">
+        </div>
+
+        <button
+            class="hidden md:block bg-brand-yellow text-black font-bold text-sm px-6 py-3 rounded hover:bg-yellow-300 transition-colors uppercase tracking-wide">
+            Join For Free
+        </button>
+
+        <button onclick="toggleMenu()" class="block md:hidden text-gray-700 focus:outline-none">
+            <div class="space-y-1.5">
+                <div class="w-8 h-0.5 bg-gray-700"></div>
+                <div class="w-8 h-0.5 bg-gray-700"></div>
+            </div>
+        </button>
+    </nav>
+
+    <main
+        class="min-h-auto md:min-h-[600px] flex items-center justify-center px-4 py-8 md:py-12 bg-brand-blue overflow-hidden">
+        <div class="container mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+
+            <div class="relative flex justify-center lg:justify-start order-1 lg:order-1 mt-0 lg:mt-0 w-full">
+                <div class="relative w-full max-w-[280px] md:max-w-md">
+                    <img src="https://images.squarespace-cdn.com/content/v1/68ef93a4c5281829b467638f/1760531367020-KCUP0EX9LMN8DZ7NPR3F/Cheers_1200px.gif"
+                        alt="Friends dining together"
+                        class="w-full aspect-square object-cover rounded-[2rem] shadow-2xl">
+                    <img src="https://images.squarespace-cdn.com/content/v1/68ef93a4c5281829b467638f/1760531367025-YTZN9FYL59PFJHTEZYQW/Asset+29%403x.png"
+                        alt="Referral Bonus"
+                        class="absolute bottom-[-30px] right-[-15px] md:translate-x-0 md:-bottom-12 md:-left-10 w-[140px] md:w-48 shadow-xl z-10">
+                </div>
+            </div>
+
+            <div class="text-white space-y-5 md:space-y-8 order-2 lg:order-2 text-left lg:text-left mt-12 lg:mt-0 px-0">
+                <h1 class="text-[32px] leading-[1.15] md:text-5xl lg:text-6xl font-bold">
+                    Join our VIP Circle, where your loyalty pays off.
+                </h1>
+                <p class="text-base md:text-xl text-blue-50 font-light leading-relaxed max-w-xl mx-0 lg:mx-0">
+                    It's free, fast, and rewarding! Signing up only takes one minute. You'll be on your way to rewards
+                    every time you dine with us.
+                </p>
+                <button
+                    class="bg-[#F3D47B] text-black px-8 py-4 rounded-lg hover:bg-yellow-300 transition-colors uppercase shadow-lg w-full md:w-auto font-bold text-sm tracking-wide">
+                    Sign Up Now
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <section class="w-full py-20 px-6 md:px-8" style="background-color: #edd286;">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-center mb-12 md:mb-16" style="font-family: Manrope; font-size: 62.08px; font-weight: 500; line-height: 69.1323px; color: rgb(1, 4, 35);">
+                Start getting rewarded today
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-12 text-center">
+                <div class="flex flex-col items-center space-y-6">
+                    <div class="h-40 flex items-end justify-center">
+                        <img src="https://images.squarespace-cdn.com/content/v1/68ef93a4c5281829b467638f/1760531367046-KEVXJ69FP22ETGA1M44G/Step1.png"
+                            alt="Sign Up" class="h-full object-contain">
+                    </div>
+                    <p class="text-lg leading-snug text-gray-900 max-w-xs mx-auto">
+                        Join our <span class="italic">VIP Circle!</span><br>Sign up today, it only takes one minute.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center space-y-6">
+                    <div class="h-40 flex items-end justify-center">
+                        <img src="https://images.squarespace-cdn.com/content/v1/68ef93a4c5281829b467638f/1760531367038-R5ZJ7G814QMC5QWR8CV6/Step2.png"
+                            alt="Receive Invite" class="h-full object-contain">
+                    </div>
+                    <p class="text-lg leading-snug text-gray-900 max-w-xs mx-auto">
+                        You’ll receive a personal invite to our <span class="italic">VIP Circle</span>
+                    </p>
+                </div>
+                <div class="flex flex-col items-center space-y-6">
+                    <div class="h-40 flex items-end justify-center">
+                        <img src="https://images.squarespace-cdn.com/content/v1/68ef93a4c5281829b467638f/1760531367042-WZ05U3R5ADHV4I522B97/Step3.png"
+                            alt="Earn Rewards" class="h-full object-contain">
+                    </div>
+                    <p class="text-lg leading-snug text-gray-900 max-w-xs mx-auto">
+                        Dine as usual – each visit unlocks rewards so you can choose before you visit.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full bg-white py-16 md:py-20 pb-32 md:pb-40">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center px-4 sm:px-6">
+
+            <div class="relative h-[350px] md:h-[500px] w-full flex items-center justify-center lg:justify-start">
+                <div class="w-full md:w-[85%] h-full relative z-0">
+                    <img src="https://images.squarespace-cdn.com/content/v1/68ef93a4c5281829b467638f/1760531367051-F3FMZBVNO0XEX1ZIDM5O/gif.gif"
+                        alt="Background Context" class="w-full h-full object-cover rounded-[2.5rem] shadow-xl">
+                </div>
+                <div
+                    class="absolute -bottom-10 right-4 md:bottom-[-90px] md:right-0 lg:right-8 z-10 w-[40%] md:w-[45%] max-w-[240px]">
+                    <img src="https://images.squarespace-cdn.com/content/v1/68ef93a4c5281829b467638f/1760531367058-UIK67N1HWHU1O7WHCSRC/PHONE+MOCK.png"
+                        alt="App Interface" class="w-full rounded-[2rem] shadow-2xl">
+                </div>
+            </div>
+
+            <div
+                class="bg-[#3B82F6] text-white p-8 md:p-20 lg:p-24 rounded-[2.5rem] shadow-xl relative overflow-hidden h-full flex flex-col justify-center mt-8 lg:mt-0">
+                <h2 class="text-2xl md:text-3xl font-bold uppercase tracking-wide mb-8">Here's what you get:</h2>
+                <ul class="space-y-6 text-lg font-medium leading-snug">
+                    <li class="flex items-start gap-4">
+                        <i class="fa-solid fa-check mt-1"></i> <span>Earn rewards at the restaurants you already
+                            love</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i class="fa-solid fa-check mt-1"></i> <span>Free to join, free to enjoy</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i class="fa-solid fa-check mt-1"></i> <span>The more you visit, the more rewards (and
+                            surprises) you unlock.</span>
+                    </li>
+                </ul>
+                <div class="mt-10">
+                    <button
+                        class="bg-[#EFCE87] hover:bg-[#E0C075] text-black font-bold py-4 px-10 rounded-xl uppercase tracking-wide transition-colors duration-300 shadow-md w-full md:w-auto">Start
+                        Earning</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+<section class="w-full py-40 px-6 md:px-12 lg:px-24 bg-[#4383FF]">
+    <div class="w-full">
+        
+        <div class="mb-16">
+            <h1 class="text-white leading-tight"
+                style="font-family: Manrope, sans-serif; font-size: 92.8px; font-weight: 500; color: rgb(235, 235, 235);">
+                Meet the VIP Levels
+            </h1>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+
+            <div>
+                <details class="group border-b border-white/30">
+                    <summary class="flex justify-between items-center cursor-pointer py-6 list-none focus:outline-none border-t border-white/30">
+                        <h3 class="text-xl font-semibold text-white">Entry Level (1–4 visits):</h3>
+                        <div class="relative w-4 h-4 transition-transform duration-300 group-open:rotate-45">
+                            <div class="absolute top-1/2 left-0 w-full h-[1px] bg-white -translate-y-1/2"></div>
+                            <div class="absolute left-1/2 top-0 h-full w-[1px] bg-white -translate-x-1/2"></div>
+                        </div>
+                    </summary>
+                    
+                    <div class="pb-8 text-gray-100 text-sm leading-relaxed animate-fade-in">
+                        <ol class="list-decimal pl-5 space-y-2 marker:text-white/70">
+                            <li><strong class="text-white">Instant Savings:</strong> X% off your next visit</li>
+                            <li><strong class="text-white">BOGO Bonus:</strong> X% off for you + Y% for a friend when you dine together</li>
+                            <li><strong class="text-white">Loyal Lunch:</strong> Buy 5 lunches; 6th free</li>
+                            <li><strong class="text-white">Kids Eat Free Night:</strong> One free kids’ meal with every adult entrée</li>
+                            <li><strong class="text-white">Early Bird Specials:</strong> Double value selected Happy Hour discounts</li>
+                            <li><strong class="text-white">Points with Every Bite:</strong> Earn points each visit to redeem later</li>
+                            <li><strong class="text-white">On the House:</strong> Free appetizer, dessert, or small plate</li>
+                            <li><strong class="text-white">Celebrate Big:</strong> Birthday or anniversary freebie</li>
+                            <li><strong class="text-white">Chef’s Bite:</strong> Surprise amuse-bouche from the kitchen</li>
+                            <li><strong class="text-white">Take-Home Treat:</strong> A pastry, bread, or snack box after every Xth visit</li>
+                            <li><strong class="text-white">Priority Seating:</strong> Skip the line over walk-ins</li>
+                            <li><strong class="text-white">Family Night Deal:</strong> Free kid’s dessert or appetizer when dining as a family</li>
+                            <li><strong class="text-white">Midweek Treat:</strong> Complimentary starter or side dishes</li>
+                            <li><strong class="text-white">Bring-a-Friend Bonus:</strong> Extra points or freebie when you dine with a guest</li>
+                        </ol>
+                        <p class="mt-4 pt-2 border-t border-white/20">
+                            <strong class="text-white">Loyalty Upgrade:</strong> Automatically upgrade your order to a premium level
+                        </p>
+                    </div>
+                </details>
+            </div>
+
+            <div>
+                <details class="group border-b border-white/30">
+                    <summary class="flex justify-between items-center cursor-pointer py-6 list-none focus:outline-none border-t border-white/30">
+                        <h3 class="text-xl font-semibold text-white">Insider Level (5+ visits):</h3>
+                        <div class="relative w-4 h-4 transition-transform duration-300 group-open:rotate-45">
+                            <div class="absolute top-1/2 left-0 w-full h-[1px] bg-white -translate-y-1/2"></div>
+                            <div class="absolute left-1/2 top-0 h-full w-[1px] bg-white -translate-x-1/2"></div>
+                        </div>
+                    </summary>
+
+                    <div class="pb-8 text-gray-100 text-sm leading-relaxed animate-fade-in">
+                        <ol class="list-decimal pl-5 space-y-2 marker:text-white/70">
+                            <li><strong class="text-white">Instant Savings:</strong> X% off your next visit</li>
+                            <li><strong class="text-white">Random Acts of Delight:</strong> Surprise treats, just because</li>
+                            <li><strong class="text-white">“Welcome Back” Gifts:</strong> Dessert box, coffee blend, or small take-home reward</li>
+                            <li><strong class="text-white">Drink Upgrade:</strong> Free premium wine, cocktail, or coffee upgrade</li>
+                            <li><strong class="text-white">Signature Sampler:</strong> Free platter of sides after consistent visits</li>
+                            <li><strong class="text-white">Chef’s Compliment:</strong> Personalized dish or dessert curated for you</li>
+                            <li><strong class="text-white">Secret Menu:</strong> Hidden specials just for members</li>
+                            <li><strong class="text-white">Squad Saver:</strong> Group discount when you bring 4+ friends</li>
+                            <li><strong class="text-white">VIP Access:</strong> Best tables + no-wait reservations</li>
+                            <li><strong class="text-white">Invite-Only Nights:</strong> Wine tastings, happy hours, or themed events</li>
+                            <li><strong class="text-white">First Taste:</strong> Previews of new menu items (+1 guest included)</li>
+                            <li><strong class="text-white">Community Perks:</strong> Gifts from local business partners</li>
+                            <li><strong class="text-white">Behind the Scenes:</strong> Kitchen tour or chef meet-and-greet after 10 visits</li>
+                            <li><strong class="text-white">Step-Up Discounts:</strong> 10% off after X visits, 15% after Y, 20% after Z</li>
+                        </ol>
+                        <p class="mt-4 pt-2 border-t border-white/20">
+                            <strong class="text-white">Chef’s Table Night:</strong> Private dining with a custom-curated menu
+                        </p>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <section class="relative w-full bg-[#010423] text-white overflow-hidden font-sans">
+        <style>
+            @keyframes marquee-scroll {
+                0% {
+                    startOffset: 0%;
+                }
+
+                100% {
+                    startOffset: -100%;
+                }
+            }
+
+            .animate-marquee-path {
+                animation: marquee-scroll 30s linear infinite;
+            }
+        </style>
+
+        <div class="w-full pt-12 pb-0 flex justify-center overflow-hidden pointer-events-none select-none opacity-90">
+            <svg class="w-[200%] md:w-full min-w-[800px] max-w-[2000px]" viewBox="0 0 1500 200" fill="currentColor"
+                preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <path id="vipCurve" fill="none"
+                        d="M-550,64.214 L-550,64.214 S-183.15,124.214 0,124.214 S366.85,64.214 550,64.214 S916.85,124.214 1100,124.214 S1466.85,64.214 1650,64.214 S2016.85,124.214 2200,124.214">
+                    </path>
+                </defs>
+                <text class="text-5xl md:text-6xl font-medium tracking-tight fill-white" dominant-baseline="middle">
+                    <textPath class="animate-marquee-path" href="#vipCurve" startOffset="0%">
+                        Spread the magic of the VIP Circle &nbsp;&nbsp;✨&nbsp;&nbsp; Spread the magic of the VIP Circle
+                        &nbsp;&nbsp;✨&nbsp;&nbsp; Spread the magic of the VIP Circle &nbsp;&nbsp;✨&nbsp;&nbsp;
+                    </textPath>
+                </text>
+            </svg>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-4 py-12 md:py-20 flex flex-col items-center text-center">
+            <h2 class="max-w-4xl text-2xl md:text-3xl lg:text-4xl leading-relaxed font-light text-gray-100 mb-8">
+                There’s really nothing quite like memorable experiences sparking conversations among friends - shared by
+                word-of-mouth.
+            </h2>
+            <button
+                class="bg-[#edd286] hover:bg-[#edd286] transition-colors text-black text-lg md:text-xl font-bold uppercase tracking-widest px-12 md:px-20 py-5 md:py-7 rounded-md shadow-lg w-full md:w-auto">
+                Join For Free!
+            </button>
+        </div>
+
+        <div class="w-full px-6 lg:px-8 pb-6 pt-8 mt-4">
+            <div class="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-0 w-full justify-between">
+                <div class="flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-10">
+                    <img src="https://images.squarespace-cdn.com/content/v1/68b4590ac622133f8c8c4439/e111d1d5-f150-4c07-b9a5-ebfd0db69fcb/Rimark-Logo.png"
+                        alt="Rimark" class="h-12 md:h-20">
+                    <div class="text-3xl md:text-5xl lg:text-[62px] font-medium leading-tight max-w-2xl text-gray-200"
+                        style="font-family: Manrope;">
+                        A place made better by the people in it.
+                    </div>
+                </div>
+                <div class="flex flex-col items-start lg:items-end mt-8 lg:mt-0 lg:mr-16">
+                    <span class="text-xl mb-2">Contact</span>
+                    <a href="mailto:support@rimark.us"
+                        class="text-gray-400 hover:text-white underline decoration-1 underline-offset-4 text-sm">support@rimark.us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu-overlay');
+            if (menu.classList.contains('menu-hidden')) {
+                menu.classList.remove('menu-hidden');
+                menu.classList.add('menu-visible');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            } else {
+                menu.classList.remove('menu-visible');
+                menu.classList.add('menu-hidden');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+        }
+    </script>
+</body>
+</html>
